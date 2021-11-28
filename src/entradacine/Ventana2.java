@@ -52,7 +52,7 @@ public class Ventana2 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
-        jLabel1.setText("Seleccione Funcion");
+        jLabel1.setText("Seleccione Función");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel2.setText("Cine World");
@@ -78,7 +78,7 @@ public class Ventana2 extends javax.swing.JFrame {
         jLabel3.setText("Doblada 2D");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 14)); // NOI18N
-        jLabel4.setText("Informacion");
+        jLabel4.setText("Información");
 
         jLabel6.setText("Doblada 3D");
 
