@@ -58,6 +58,11 @@ public class FuncionFrenchDispatch extends javax.swing.JFrame {
         jbtn_volvermenu.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbtn_volvermenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha-izquierda.png"))); // NOI18N
         jbtn_volvermenu.setText("Volver");
+        jbtn_volvermenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_volvermenuActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jrb_funcion1);
         jrb_funcion1.setText("14:30");
@@ -82,6 +87,11 @@ public class FuncionFrenchDispatch extends javax.swing.JFrame {
         tbtn_comprar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tbtn_comprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verificar.png"))); // NOI18N
         tbtn_comprar.setText("Comprar");
+        tbtn_comprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbtn_comprarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,6 +160,14 @@ public class FuncionFrenchDispatch extends javax.swing.JFrame {
     private void jrb_funcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_funcion3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jrb_funcion3ActionPerformed
+
+    private void tbtn_comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtn_comprarActionPerformed
+        new Comprar().setVisible(true);
+    }//GEN-LAST:event_tbtn_comprarActionPerformed
+
+    private void jbtn_volvermenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volvermenuActionPerformed
+        new Ventana1().setVisible(true);
+    }//GEN-LAST:event_jbtn_volvermenuActionPerformed
 
     /**
      * @param args the command line arguments

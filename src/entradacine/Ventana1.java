@@ -73,15 +73,35 @@ public class Ventana1 extends javax.swing.JFrame {
 
         jbtn_pelicula3.setFont(new java.awt.Font("Segoe UI Symbol", 1, 11)); // NOI18N
         jbtn_pelicula3.setText("The French Dispatch");
+        jbtn_pelicula3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_pelicula3ActionPerformed(evt);
+            }
+        });
 
         jbtn_pelicula4.setFont(new java.awt.Font("Segoe UI Symbol", 1, 10)); // NOI18N
         jbtn_pelicula4.setText("Matrix: Resurrections");
+        jbtn_pelicula4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_pelicula4ActionPerformed(evt);
+            }
+        });
 
         jbtn_pelicula5.setFont(new java.awt.Font("Segoe UI Symbol", 1, 11)); // NOI18N
         jbtn_pelicula5.setText("Eternals");
+        jbtn_pelicula5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_pelicula5ActionPerformed(evt);
+            }
+        });
 
         jbtn_pelicula6.setFont(new java.awt.Font("Segoe UI Symbol", 1, 11)); // NOI18N
         jbtn_pelicula6.setText("House Of Gucci");
+        jbtn_pelicula6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_pelicula6ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel2.setText("Cine World");
@@ -189,9 +209,9 @@ public class Ventana1 extends javax.swing.JFrame {
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbtn_pelicula2)
-                            .addComponent(jbtn_pelicula3)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jbtn_pelicula3)
+                            .addComponent(jbtn_pelicula2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -216,11 +236,11 @@ public class Ventana1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtn_pelicula1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_pelicula1ActionPerformed
-        // TODO add your handling code here:
+        new Ventana2().setVisible(true);
     }//GEN-LAST:event_jbtn_pelicula1ActionPerformed
 
     private void jbtn_pelicula2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_pelicula2ActionPerformed
-        // TODO add your handling code here:
+        new FuncionDune().setVisible(true);
     }//GEN-LAST:event_jbtn_pelicula2ActionPerformed
 
     private void jmi_informacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_informacionActionPerformed
@@ -232,8 +252,24 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jmi_salirActionPerformed
 
     private void jmi_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_buscarActionPerformed
-        // TODO add your handling code here:
+        new Buscar().setVisible(true);
     }//GEN-LAST:event_jmi_buscarActionPerformed
+
+    private void jbtn_pelicula3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_pelicula3ActionPerformed
+        new FuncionFrenchDispatch().setVisible(true);
+    }//GEN-LAST:event_jbtn_pelicula3ActionPerformed
+
+    private void jbtn_pelicula4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_pelicula4ActionPerformed
+        new FuncionMatrix().setVisible(true);
+    }//GEN-LAST:event_jbtn_pelicula4ActionPerformed
+
+    private void jbtn_pelicula5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_pelicula5ActionPerformed
+        new FuncionEternals().setVisible(true);
+    }//GEN-LAST:event_jbtn_pelicula5ActionPerformed
+
+    private void jbtn_pelicula6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_pelicula6ActionPerformed
+        new FuncionHouseOfGucci().setVisible(true);
+    }//GEN-LAST:event_jbtn_pelicula6ActionPerformed
 
     /**
      * @param args the command line arguments

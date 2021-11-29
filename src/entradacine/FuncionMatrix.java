@@ -60,6 +60,11 @@ public class FuncionMatrix extends javax.swing.JFrame {
         jbtn_volvermenu.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbtn_volvermenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha-izquierda.png"))); // NOI18N
         jbtn_volvermenu.setText("Volver");
+        jbtn_volvermenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_volvermenuActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(jrb_funcion1);
         jrb_funcion1.setText("12:30");
@@ -94,6 +99,11 @@ public class FuncionMatrix extends javax.swing.JFrame {
         tbtn_comprar1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tbtn_comprar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/verificar.png"))); // NOI18N
         tbtn_comprar1.setText("Comprar");
+        tbtn_comprar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbtn_comprar1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,6 +188,14 @@ public class FuncionMatrix extends javax.swing.JFrame {
     private void jrb_funcion4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_funcion4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jrb_funcion4ActionPerformed
+
+    private void tbtn_comprar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtn_comprar1ActionPerformed
+        new Comprar().setVisible(true);
+    }//GEN-LAST:event_tbtn_comprar1ActionPerformed
+
+    private void jbtn_volvermenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volvermenuActionPerformed
+        new Ventana1().setVisible(true);
+    }//GEN-LAST:event_jbtn_volvermenuActionPerformed
 
     /**
      * @param args the command line arguments
