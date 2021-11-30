@@ -38,13 +38,11 @@ public class Agregar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jtxt_titulo = new javax.swing.JTextField();
         jtxt_alias = new javax.swing.JTextField();
         jtxt_dia = new javax.swing.JTextField();
-        jtxt_cantidadEntrada = new javax.swing.JTextField();
         jtxt_mes = new javax.swing.JTextField();
         jtxt_anio = new javax.swing.JTextField();
         jtxt_precio = new javax.swing.JTextField();
@@ -61,8 +59,6 @@ public class Agregar extends javax.swing.JFrame {
         jLabel2.setText("Alias");
 
         jLabel3.setText("Fecha de Estreno");
-
-        jLabel4.setText("Entradas Disponibles");
 
         jLabel5.setText("Precio Entrada");
 
@@ -93,8 +89,6 @@ public class Agregar extends javax.swing.JFrame {
                 jtxt_diaFocusGained(evt);
             }
         });
-
-        jtxt_cantidadEntrada.setText("Ingrese Cantidad (sin puntos)");
 
         jtxt_mes.setText("MM");
         jtxt_mes.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -137,6 +131,11 @@ public class Agregar extends javax.swing.JFrame {
         });
 
         jbtn_limpiar.setText("Limpiar");
+        jbtn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_limpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,37 +144,37 @@ public class Agregar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel4)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)))
                     .addComponent(jbtn_agregar))
                 .addGap(16, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(0, 10, Short.MAX_VALUE)
-                            .addComponent(jckb_disponible)
-                            .addGap(222, 222, 222))
                         .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jtxt_alias, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(78, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtxt_alias, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jtxt_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jtxt_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jtxt_anio, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jtxt_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jtxt_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jtxt_anio, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jtxt_cantidadEntrada)
-                                .addComponent(jtxt_precio)
-                                .addComponent(jtxt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGap(2, 2, 2)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jckb_disponible)
+                                        .addComponent(jtxt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(0, 0, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbtn_limpiar)
                         .addGap(55, 55, 55)
@@ -201,22 +200,18 @@ public class Agregar extends javax.swing.JFrame {
                     .addComponent(jtxt_anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jtxt_cantidadEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jtxt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jckb_disponible))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtn_agregar)
                     .addComponent(jbtn_volver)
                     .addComponent(jbtn_limpiar))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -275,7 +270,7 @@ public class Agregar extends javax.swing.JFrame {
         
         String titulo, alias, dia, mes, anio, fechaStr;
         Date fecha;
-        int precio, cantidad;
+        int precio;
         boolean disponible;
         
         titulo = this.jtxt_titulo.getText();
@@ -323,18 +318,9 @@ public class Agregar extends javax.swing.JFrame {
             return;
         }
         
-        try {
-            cantidad = Integer.parseInt(this.jtxt_cantidadEntrada.getText());            
-        } 
-        catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Ingrese un valor numérico", "Validación", 2);
-            this.jtxt_cantidadEntrada.requestFocus();
-            return;
-        }
-        
         disponible = this.jckb_disponible.isSelected();
         
-        Entrada entrada = new Entrada(titulo, alias, fecha, cantidad, precio, disponible);
+        Entrada entrada = new Entrada(titulo, alias, fecha, 0, precio, disponible);
                 
         Registro reg = new Registro();
         
@@ -351,6 +337,18 @@ public class Agregar extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jbtn_agregarActionPerformed
+
+    private void jbtn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_limpiarActionPerformed
+       
+        this.jtxt_titulo.setText("");
+        this.jtxt_alias.setText("");
+        this.jtxt_dia.setText("");
+        this.jtxt_mes.setText("");
+        this.jtxt_anio.setText("");
+        this.jtxt_precio.setText("");
+        this.jckb_disponible.setSelected(false);
+        
+    }//GEN-LAST:event_jbtn_limpiarActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -391,7 +389,6 @@ public class Agregar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JButton jbtn_agregar;
@@ -400,7 +397,6 @@ public class Agregar extends javax.swing.JFrame {
     private javax.swing.JCheckBox jckb_disponible;
     private javax.swing.JTextField jtxt_alias;
     private javax.swing.JTextField jtxt_anio;
-    private javax.swing.JTextField jtxt_cantidadEntrada;
     private javax.swing.JTextField jtxt_dia;
     private javax.swing.JTextField jtxt_mes;
     private javax.swing.JTextField jtxt_precio;

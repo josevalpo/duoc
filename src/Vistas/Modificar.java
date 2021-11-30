@@ -5,17 +5,32 @@
  */
 package Vistas;
 
+import Modelo.Entrada;
+import controlador.Registro;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author starj
  */
 public class Modificar extends javax.swing.JFrame {
 
+    Registro reg = new Registro();    
+    
     /**
      * Creates new form Modificar
      */
     public Modificar() {
         initComponents();
+        
+        this.jtxt_titulo.setEditable(false);
+        this.jtxt_fecha.setEditable(false);
+        this.jtxt_precio.setEditable(false);
+        this.jtxt_entrada.setEditable(false);
+        this.jckb_disponible.setEnabled(false);
     }
 
     /**
@@ -27,21 +42,224 @@ public class Modificar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jtxt_alias = new javax.swing.JTextField();
+        jtxt_titulo = new javax.swing.JTextField();
+        jtxt_fecha = new javax.swing.JTextField();
+        jtxt_precio = new javax.swing.JTextField();
+        jtxt_entrada = new javax.swing.JTextField();
+        jbtn_buscar = new javax.swing.JButton();
+        jckb_disponible = new javax.swing.JCheckBox();
+        jbtn_actualizar = new javax.swing.JButton();
+        jbtn_limpiar = new javax.swing.JButton();
+        jbtn_volver = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Modificar Película");
+
+        jLabel1.setText("Ingrese Alias");
+
+        jLabel2.setText("Título");
+
+        jLabel3.setText("Fecha de Estreno");
+
+        jLabel4.setText("Precio Entrada");
+
+        jLabel5.setText("Entradas Vendidas");
+
+        jLabel6.setText("Disponible");
+
+        jbtn_buscar.setText("Buscar");
+        jbtn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_buscarActionPerformed(evt);
+            }
+        });
+
+        jbtn_actualizar.setText("Actualizar");
+        jbtn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_actualizarActionPerformed(evt);
+            }
+        });
+
+        jbtn_limpiar.setText("Limpiar");
+        jbtn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_limpiarActionPerformed(evt);
+            }
+        });
+
+        jbtn_volver.setText("Volver");
+        jbtn_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_volverActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jckb_disponible)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jtxt_alias, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbtn_buscar))
+                    .addComponent(jtxt_titulo)
+                    .addComponent(jtxt_fecha)
+                    .addComponent(jtxt_precio)
+                    .addComponent(jtxt_entrada))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbtn_actualizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbtn_limpiar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbtn_volver)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jtxt_alias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtn_buscar))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jtxt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jtxt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jtxt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jtxt_entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jckb_disponible))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtn_actualizar)
+                    .addComponent(jbtn_limpiar)
+                    .addComponent(jbtn_volver)
+                    .addComponent(jButton1))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbtn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volverActionPerformed
+        
+        dispose();
+        
+    }//GEN-LAST:event_jbtn_volverActionPerformed
+
+    private void jbtn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_buscarActionPerformed
+        
+        String alias = this.jtxt_alias.getText();
+        
+        Entrada entrada = reg.buscarPorAlias(alias);
+        
+        String titulo = entrada.getTitulo();
+        Date fecha = entrada.getFuncion();
+        int precio = entrada.getPrecio();
+        int cantidadEntrada = entrada.getCantidadEntrada();
+        boolean disponible = entrada.isDisponible();
+        
+        this.jtxt_titulo.setText(titulo);
+        this.jtxt_fecha.setText(""+fecha);
+        this.jtxt_precio.setText(String.valueOf(precio));
+        this.jtxt_entrada.setText(String.valueOf(cantidadEntrada));
+        this.jckb_disponible.setSelected(disponible);
+    }//GEN-LAST:event_jbtn_buscarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        this.jtxt_titulo.setEditable(true);
+        this.jtxt_fecha.setEditable(true);
+        this.jtxt_precio.setEditable(true);
+        this.jckb_disponible.setEnabled(false);
+        this.jtxt_titulo.requestFocus();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jbtn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_actualizarActionPerformed
+        
+        int precio, entradas;
+        String titulo, alias;
+        boolean disponible;
+        
+        alias = this.jtxt_alias.getText();
+        titulo = this.jtxt_titulo.getText();
+        precio = Integer.parseInt(this.jtxt_precio.getText());
+        entradas = Integer.parseInt(this.jtxt_entrada.getText());
+        disponible = this.jckb_disponible.isSelected();
+        
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        
+        Date fecha = null;
+        
+        try {
+            fecha = formato.parse(this.jtxt_fecha.getText());
+        } 
+        catch (ParseException e) {
+            System.out.println("Error de actualización de fecha" + e.getMessage());
+        }
+        
+        Entrada entrada = new Entrada(titulo, alias, fecha, entradas, precio, disponible);
+        
+        reg.actualizar(entrada);
+        JOptionPane.showMessageDialog(this, "Datos Actualizados", "Confirmación", 1);    
+        
+    }//GEN-LAST:event_jbtn_actualizarActionPerformed
+
+    private void jbtn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_limpiarActionPerformed
+        
+        this.jtxt_titulo.setText("");
+        this.jtxt_alias.setText("");
+        this.jtxt_fecha.setText("");
+        this.jtxt_entrada.setText("");
+        this.jtxt_precio.setText("");
+        this.jckb_disponible.setSelected(false);
+    }//GEN-LAST:event_jbtn_limpiarActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -79,5 +297,22 @@ public class Modificar extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jbtn_actualizar;
+    private javax.swing.JButton jbtn_buscar;
+    private javax.swing.JButton jbtn_limpiar;
+    private javax.swing.JButton jbtn_volver;
+    private javax.swing.JCheckBox jckb_disponible;
+    private javax.swing.JTextField jtxt_alias;
+    private javax.swing.JTextField jtxt_entrada;
+    private javax.swing.JTextField jtxt_fecha;
+    private javax.swing.JTextField jtxt_precio;
+    private javax.swing.JTextField jtxt_titulo;
     // End of variables declaration//GEN-END:variables
 }
