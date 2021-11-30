@@ -2,6 +2,7 @@ package controlador;
 import java.util.Date;
 import Modelo.Entrada;
 import BD.Conexion;
+import Modelo.Compra;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -75,14 +76,42 @@ public class Registro {
             
         } 
         catch (SQLException e) {
-            System.out.println("Error SQL al agregar película" + e.getMessage());
+            System.out.println("Error SQL al actualizar película" + e.getMessage());
             return false;
         } 
         catch (Exception e) {
-            System.out.println("Error al agregar película (EXCEPTION)"  + e.getMessage());
+            System.out.println("Error al actualizar película (EXCEPTION)"  + e.getMessage());
             return false;
         }
     }
+  
+    public boolean actualizarCompra(Compra compra){
+        
+        try {
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
+            
+            String query = "UPDATE entradacine SET cantidadEntrada = ? WHERE alias = ?";
+            PreparedStatement stmt = cnx.prepareStatement(query);
+            stmt.setInt(1, compra.getCantidadEntrada());
+            stmt.setString(2, compra.getAlias());
+            
+            stmt.executeUpdate();
+            stmt.close();
+            cnx.close();
+            
+            return true;
+            
+        } 
+        catch (SQLException e) {
+            System.out.println("Error SQL al ejecutar compra" + e.getMessage());
+            return false;
+        } 
+        catch (Exception e) {
+            System.out.println("Error al ejecutar compra (EXCEPTION)"  + e.getMessage());
+            return false;
+        }
+    }    
     
     public boolean eliminar(String Alias){
 

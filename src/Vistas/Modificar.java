@@ -58,7 +58,7 @@ public class Modificar extends javax.swing.JFrame {
         jbtn_actualizar = new javax.swing.JButton();
         jbtn_limpiar = new javax.swing.JButton();
         jbtn_volver = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbtn_editar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Modificar Película");
@@ -103,10 +103,10 @@ public class Modificar extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Editar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_editar.setText("Editar");
+        jbtn_editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtn_editarActionPerformed(evt);
             }
         });
 
@@ -137,7 +137,7 @@ public class Modificar extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jbtn_editar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbtn_actualizar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -179,7 +179,7 @@ public class Modificar extends javax.swing.JFrame {
                     .addComponent(jbtn_actualizar)
                     .addComponent(jbtn_limpiar)
                     .addComponent(jbtn_volver)
-                    .addComponent(jButton1))
+                    .addComponent(jbtn_editar))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -212,14 +212,14 @@ public class Modificar extends javax.swing.JFrame {
         this.jckb_disponible.setSelected(disponible);
     }//GEN-LAST:event_jbtn_buscarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbtn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_editarActionPerformed
         
         this.jtxt_titulo.setEditable(true);
         this.jtxt_fecha.setEditable(true);
         this.jtxt_precio.setEditable(true);
         this.jckb_disponible.setEnabled(false);
         this.jtxt_titulo.requestFocus();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbtn_editarActionPerformed
 
     private void jbtn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_actualizarActionPerformed
         
@@ -297,7 +297,6 @@ public class Modificar extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -306,6 +305,7 @@ public class Modificar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JButton jbtn_actualizar;
     private javax.swing.JButton jbtn_buscar;
+    private javax.swing.JButton jbtn_editar;
     private javax.swing.JButton jbtn_limpiar;
     private javax.swing.JButton jbtn_volver;
     private javax.swing.JCheckBox jckb_disponible;
