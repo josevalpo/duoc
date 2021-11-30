@@ -29,4 +29,3 @@ public class Conexion {
 //            Conexion con = new Conexion();
 //            con.obtenerConexion();
         }
-}
