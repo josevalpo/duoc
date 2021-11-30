@@ -5,17 +5,25 @@
  */
 package Vistas;
 
+import controlador.Registro; //Revisar
+import javax.swing.JOptionPane;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import Modelo.Entrada;  
+
 /**
  *
  * @author starj
  */
 public class Agregar extends javax.swing.JFrame {
-
+  
     /**
      * Creates new form Agregar
      */
     public Agregar() {
         initComponents();
+        this.jbtn_volver.requestFocus();
     }
 
     /**
@@ -27,57 +35,375 @@ public class Agregar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jtxt_titulo = new javax.swing.JTextField();
+        jtxt_alias = new javax.swing.JTextField();
+        jtxt_dia = new javax.swing.JTextField();
+        jtxt_cantidadEntrada = new javax.swing.JTextField();
+        jtxt_mes = new javax.swing.JTextField();
+        jtxt_anio = new javax.swing.JTextField();
+        jtxt_precio = new javax.swing.JTextField();
+        jckb_disponible = new javax.swing.JCheckBox();
+        jbtn_agregar = new javax.swing.JButton();
+        jbtn_volver = new javax.swing.JButton();
+        jbtn_limpiar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Agregar Película");
+
+        jLabel1.setText("Título");
+
+        jLabel2.setText("Alias");
+
+        jLabel3.setText("Fecha de Estreno");
+
+        jLabel4.setText("Entradas Disponibles");
+
+        jLabel5.setText("Precio Entrada");
+
+        jLabel6.setText("Disponible");
+
+        jtxt_titulo.setText("Ingrese Título");
+        jtxt_titulo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_tituloFocusGained(evt);
+            }
+        });
+        jtxt_titulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_tituloActionPerformed(evt);
+            }
+        });
+
+        jtxt_alias.setText("Ingrese Alias (1eras 3 letras)");
+        jtxt_alias.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_aliasFocusGained(evt);
+            }
+        });
+
+        jtxt_dia.setText("DD");
+        jtxt_dia.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_diaFocusGained(evt);
+            }
+        });
+
+        jtxt_cantidadEntrada.setText("Ingrese Cantidad (sin puntos)");
+
+        jtxt_mes.setText("MM");
+        jtxt_mes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_mesFocusGained(evt);
+            }
+        });
+        jtxt_mes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_mesActionPerformed(evt);
+            }
+        });
+
+        jtxt_anio.setText("AAAA");
+        jtxt_anio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_anioFocusGained(evt);
+            }
+        });
+
+        jtxt_precio.setText("Ingrese Valor (sin puntos)");
+        jtxt_precio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jtxt_precioFocusGained(evt);
+            }
+        });
+
+        jbtn_agregar.setText("Agregar");
+        jbtn_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_agregarActionPerformed(evt);
+            }
+        });
+
+        jbtn_volver.setText("Volver");
+        jbtn_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_volverActionPerformed(evt);
+            }
+        });
+
+        jbtn_limpiar.setText("Limpiar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel1))
+                    .addComponent(jbtn_agregar))
+                .addGap(16, 16, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(0, 10, Short.MAX_VALUE)
+                            .addComponent(jckb_disponible)
+                            .addGap(222, 222, 222))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jtxt_alias, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jtxt_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtxt_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jtxt_anio, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jtxt_cantidadEntrada)
+                                .addComponent(jtxt_precio)
+                                .addComponent(jtxt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbtn_limpiar)
+                        .addGap(55, 55, 55)
+                        .addComponent(jbtn_volver)
+                        .addGap(42, 42, 42))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jtxt_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jtxt_alias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jtxt_dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jtxt_cantidadEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jtxt_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jckb_disponible))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtn_agregar)
+                    .addComponent(jbtn_volver)
+                    .addComponent(jbtn_limpiar))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jtxt_tituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_tituloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_tituloActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Agregar().setVisible(true);
+    private void jtxt_mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_mesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_mesActionPerformed
+
+    private void jbtn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volverActionPerformed
+        
+        dispose();
+        
+    }//GEN-LAST:event_jbtn_volverActionPerformed
+
+    private void jtxt_tituloFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_tituloFocusGained
+        
+        this.jtxt_titulo.setText("");
+        
+    }//GEN-LAST:event_jtxt_tituloFocusGained
+
+    private void jtxt_aliasFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_aliasFocusGained
+        this.jtxt_alias.setText("");
+    }//GEN-LAST:event_jtxt_aliasFocusGained
+
+    private void jtxt_diaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_diaFocusGained
+        
+        this.jtxt_dia.setText("");
+        
+    }//GEN-LAST:event_jtxt_diaFocusGained
+
+    private void jtxt_mesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_mesFocusGained
+        
+        this.jtxt_mes.setText("");
+        
+    }//GEN-LAST:event_jtxt_mesFocusGained
+
+    private void jtxt_anioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_anioFocusGained
+        
+        this.jtxt_anio.setText("");
+        
+    }//GEN-LAST:event_jtxt_anioFocusGained
+
+    private void jtxt_precioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtxt_precioFocusGained
+        
+        this.jtxt_precio.setText("");
+        
+    }//GEN-LAST:event_jtxt_precioFocusGained
+
+    private void jbtn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_agregarActionPerformed
+        
+        String titulo, alias, dia, mes, anio, fechaStr;
+        Date fecha;
+        int precio, cantidad;
+        boolean disponible;
+        
+        titulo = this.jtxt_titulo.getText();
+        if (titulo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese Título", "Valicación", 2);
+            this.jtxt_titulo.requestFocus();
+            return;
+        }
+        
+        alias = this.jtxt_alias.getText();
+        if (alias.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese Alias", "Valicación", 2);
+            this.jtxt_alias.requestFocus();
+            return;
+        }
+        
+        dia = this.jtxt_dia.getText();
+        mes = this.jtxt_mes.getText();
+        anio = this.jtxt_anio.getText();
+        
+        if (dia.isEmpty() || mes.isEmpty() || anio.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha", "Valicación", 2);
+            this.jtxt_dia.requestFocus();
+            return;
+        }
+        
+        fechaStr = dia + "/" + mes + "/" + anio;
+        SimpleDateFormat formateo = new SimpleDateFormat("dd/MM/yyyy");
+        
+        try {
+            fecha = formateo.parse(fechaStr);
+        } 
+        catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese formato de fecha DD/MM/AAAA", "Validación", 2);
+            this.jtxt_dia.requestFocus();
+            return;
+        }
+        
+        try {
+            precio = Integer.parseInt(this.jtxt_precio.getText());            
+        } 
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un valor numérico", "Validación", 2);
+            this.jtxt_precio.requestFocus();
+            return;
+        }
+        
+        try {
+            cantidad = Integer.parseInt(this.jtxt_cantidadEntrada.getText());            
+        } 
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un valor numérico", "Validación", 2);
+            this.jtxt_cantidadEntrada.requestFocus();
+            return;
+        }
+        
+        disponible = this.jckb_disponible.isSelected();
+        
+        Entrada entrada = new Entrada(titulo, alias, fecha, cantidad, precio, disponible);
+                
+        Registro reg = new Registro();
+        
+        if (reg.buscarPelicula(reg.buscarTodos(), titulo) == false) {
+            if (reg.agregar(entrada)) {
+                JOptionPane.showMessageDialog(this, "Se agregó la película", "Información", 1);
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "Se agregó la película", "Información", 1);
             }
-        });
-    }
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Película ya existe", "Información", 1);
+        }
+        
+    }//GEN-LAST:event_jbtn_agregarActionPerformed
+
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Agregar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new Agregar().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton jbtn_agregar;
+    private javax.swing.JButton jbtn_limpiar;
+    private javax.swing.JButton jbtn_volver;
+    private javax.swing.JCheckBox jckb_disponible;
+    private javax.swing.JTextField jtxt_alias;
+    private javax.swing.JTextField jtxt_anio;
+    private javax.swing.JTextField jtxt_cantidadEntrada;
+    private javax.swing.JTextField jtxt_dia;
+    private javax.swing.JTextField jtxt_mes;
+    private javax.swing.JTextField jtxt_precio;
+    private javax.swing.JTextField jtxt_titulo;
     // End of variables declaration//GEN-END:variables
 }
