@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author starj
+ * @author Pía Trujillo / José Ignacio Gutiérrez
  */
 public class Modificar extends javax.swing.JFrame {
 

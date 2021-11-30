@@ -12,8 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Jose Ignacio Gutierrez
- * @version 17-11-2021
+ * @author @author Pía Trujillo / José Ignacio Gutiérrez
  */
 public class Registro {
 

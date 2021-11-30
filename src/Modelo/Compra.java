@@ -9,7 +9,7 @@ package Modelo;
 
 /**
  *
- * @author starj
+ * @author Pía Trujillo / José Ignacio Gutiérrez
  */
 public class Compra {
     

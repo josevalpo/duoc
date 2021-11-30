@@ -14,7 +14,7 @@ import Modelo.Entrada;
 
 /**
  *
- * @author starj
+ * @author Pía Trujillo / José Ignacio Gutiérrez
  */
 public class Agregar extends javax.swing.JFrame {
   

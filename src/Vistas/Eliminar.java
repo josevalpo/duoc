@@ -7,7 +7,7 @@ package Vistas;
 
 /**
  *
- * @author starj
+ * @author Pía Trujillo / José Ignacio Gutiérrez
  */
 public class Eliminar extends javax.swing.JFrame {
 

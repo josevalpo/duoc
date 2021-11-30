@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author gir15
+ * @author Pía Trujillo / José Ignacio Gutiérrez
  */
 public class Entrada {
     

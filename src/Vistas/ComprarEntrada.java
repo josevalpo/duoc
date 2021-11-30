@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author gir15
+ * @author Pía Trujillo / José Ignacio Gutiérrez
  */
 public class ComprarEntrada extends javax.swing.JFrame {
     
