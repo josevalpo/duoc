@@ -26,7 +26,7 @@ public class Registro {
             
             date = entrada.getFuncion();
             
-            String query = "INSERT INTO entradacine(titulo, alias, funcion, cantidadEntrada, precio, disponible) VALUES (?,?,?,?,?,?)";
+            String query = "INSERT INTO entrada(titulo, alias, funcion, cantidadEntrada, precio, disponible) VALUES (?,?,?,?,?,?)";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, entrada.getTitulo());
             stmt.setString(2, entrada.getAlias());
@@ -58,7 +58,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "UPDATE entradacine SET titulo = ?, funcion = ?, cantidadEntrada = ?, precio = ?, disponible = ? WHERE alias = ?";
+            String query = "UPDATE entrada SET titulo = ?, funcion = ?, cantidadEntrada = ?, precio = ?, disponible = ? WHERE alias = ?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, entrada.getTitulo());
             stmt.setDate(2, new java.sql.Date(entrada.getFuncion().getTime()));
@@ -90,7 +90,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "UPDATE entradacine SET cantidadEntrada = ? WHERE alias = ?";
+            String query = "UPDATE entrada SET cantidadEntrada = ? WHERE alias = ?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setInt(1, compra.getCantidadEntrada());
             stmt.setString(2, compra.getAlias());
@@ -118,7 +118,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
             
-            String query = "DELETE FROM entradacine WHERE alias = ?";
+            String query = "DELETE FROM entrada WHERE alias = ?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(1, alias); //REVISAR <------------------------------------------------------
             
@@ -148,7 +148,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
                         
-            String query = "SELECT titulo, alias, funcion, cantidadEntrada, precio, disponible FROM entradacine WHERE alias = ?";
+            String query = "SELECT titulo, alias, funcion, cantidadEntrada, precio, disponible FROM entrada WHERE alias = ?";
             PreparedStatement stmt = cnx.prepareStatement(query);
             stmt.setString(2, alias);
             
@@ -185,7 +185,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
                         
-            String query = "SELECT titulo, alias, funcion, cantidadEntrada, precio, disponible FROM entradacine";
+            String query = "SELECT titulo, alias, funcion, cantidadEntrada, precio, disponible FROM entrada";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             ResultSet rs = stmt.executeQuery();
