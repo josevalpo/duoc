@@ -324,7 +324,7 @@ public class Agregar extends javax.swing.JFrame {
                 
         Registro reg = new Registro();
         
-        if (reg.buscarPelicula(reg.buscarTodos(), titulo) == false) {
+        if (reg.buscarPelicula(reg.buscarTodos(), alias) == false) {
             if (reg.agregar(entrada)) {
                 JOptionPane.showMessageDialog(this, "Se agregó la película", "Información", 1);
                 

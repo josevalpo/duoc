@@ -5,6 +5,9 @@
  */
 package Vistas;
 
+import controlador.Registro;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Pía Trujillo / José Ignacio Gutiérrez
@@ -28,17 +31,18 @@ public class Eliminar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtxt_alias = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jbtn_volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eliminar Película");
 
         jLabel1.setText("Ingrese Alias");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtxt_alias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jtxt_aliasActionPerformed(evt);
             }
         });
 
@@ -46,6 +50,13 @@ public class Eliminar extends javax.swing.JFrame {
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
+            }
+        });
+
+        jbtn_volver.setText("Volver");
+        jbtn_volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_volverActionPerformed(evt);
             }
         });
 
@@ -57,10 +68,14 @@ public class Eliminar extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addComponent(jtxt_alias, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jToggleButton1)
                 .addGap(37, 37, 37))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jbtn_volver)
+                .addGap(152, 152, 152))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,9 +83,11 @@ public class Eliminar extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_alias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jToggleButton1))
-                .addContainerGap(244, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(jbtn_volver)
+                .addContainerGap(182, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,12 +95,33 @@ public class Eliminar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        dispose();
+        
+        String alias;
+        alias = this.jtxt_alias.getText();
+        
+        Registro reg = new Registro();
+        
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro?", "Advertencia", 1);
+        
+        if (opcion == 0) {
+            reg.eliminar(alias);
+            JOptionPane.showMessageDialog(this, "Película eliminada", "Aviso", 1);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Película no eliminada", "Aviso", 2);
+        }        
+        
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jtxt_aliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_aliasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jtxt_aliasActionPerformed
+
+    private void jbtn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_volverActionPerformed
+        
+        dispose();
+        
+    }//GEN-LAST:event_jbtn_volverActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -122,7 +160,8 @@ public class Eliminar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JButton jbtn_volver;
+    private javax.swing.JTextField jtxt_alias;
     // End of variables declaration//GEN-END:variables
 }

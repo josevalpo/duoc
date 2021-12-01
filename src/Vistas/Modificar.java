@@ -9,7 +9,9 @@ import Modelo.Entrada;
 import controlador.Registro;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,7 +29,9 @@ public class Modificar extends javax.swing.JFrame {
         initComponents();
         
         this.jtxt_titulo.setEditable(false);
-        this.jtxt_fecha.setEditable(false);
+        this.jtxt_dia.setEditable(false);
+        this.jtxt_mes.setEditable(false);
+        this.jtxt_anio.setEditable(false);
         this.jtxt_precio.setEditable(false);
         this.jtxt_entrada.setEditable(false);
         this.jckb_disponible.setEnabled(false);
@@ -50,7 +54,7 @@ public class Modificar extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jtxt_alias = new javax.swing.JTextField();
         jtxt_titulo = new javax.swing.JTextField();
-        jtxt_fecha = new javax.swing.JTextField();
+        jtxt_dia = new javax.swing.JTextField();
         jtxt_precio = new javax.swing.JTextField();
         jtxt_entrada = new javax.swing.JTextField();
         jbtn_buscar = new javax.swing.JButton();
@@ -59,6 +63,8 @@ public class Modificar extends javax.swing.JFrame {
         jbtn_limpiar = new javax.swing.JButton();
         jbtn_volver = new javax.swing.JButton();
         jbtn_editar = new javax.swing.JButton();
+        jtxt_mes = new javax.swing.JTextField();
+        jtxt_anio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Modificar Película");
@@ -110,6 +116,12 @@ public class Modificar extends javax.swing.JFrame {
             }
         });
 
+        jtxt_mes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxt_mesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,9 +143,14 @@ public class Modificar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbtn_buscar))
                     .addComponent(jtxt_titulo)
-                    .addComponent(jtxt_fecha)
                     .addComponent(jtxt_precio)
-                    .addComponent(jtxt_entrada))
+                    .addComponent(jtxt_entrada)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jtxt_dia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxt_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jtxt_anio)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
@@ -161,7 +178,9 @@ public class Modificar extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jtxt_fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtxt_dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -200,13 +219,25 @@ public class Modificar extends javax.swing.JFrame {
         Entrada entrada = reg.buscarPorAlias(alias);
         
         String titulo = entrada.getTitulo();
-        Date fecha = entrada.getFuncion();
         int precio = entrada.getPrecio();
+        Date fecha = entrada.getFuncion();
         int cantidadEntrada = entrada.getCantidadEntrada();
         boolean disponible = entrada.isDisponible();
         
         this.jtxt_titulo.setText(titulo);
-        this.jtxt_fecha.setText(""+fecha);
+        
+        SimpleDateFormat getYearFormat = new SimpleDateFormat("yyyy");
+        String anio = getYearFormat.format(fecha);
+        this.jtxt_anio.setText(anio);
+
+        SimpleDateFormat getMonthFormat = new SimpleDateFormat("MM");
+        String mes = getMonthFormat.format(fecha);
+        this.jtxt_mes.setText(mes);
+        
+        SimpleDateFormat getDayFormat = new SimpleDateFormat("dd");
+        String dia = getDayFormat.format(fecha);
+        this.jtxt_dia.setText(dia);
+        
         this.jtxt_precio.setText(String.valueOf(precio));
         this.jtxt_entrada.setText(String.valueOf(cantidadEntrada));
         this.jckb_disponible.setSelected(disponible);
@@ -215,39 +246,106 @@ public class Modificar extends javax.swing.JFrame {
     private void jbtn_editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_editarActionPerformed
         
         this.jtxt_titulo.setEditable(true);
-        this.jtxt_fecha.setEditable(true);
+        this.jtxt_dia.setEditable(true);
+        this.jtxt_mes.setEditable(true);
+        this.jtxt_anio.setEditable(true);
         this.jtxt_precio.setEditable(true);
-        this.jckb_disponible.setEnabled(false);
+        this.jckb_disponible.setEnabled(true);
         this.jtxt_titulo.requestFocus();
     }//GEN-LAST:event_jbtn_editarActionPerformed
 
     private void jbtn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_actualizarActionPerformed
         
-        int precio, entradas;
-        String titulo, alias;
+        String titulo, alias, dia, mes, anio, fechaStr;
+        Date fecha;
+        int precio, cantidadEntrada;
         boolean disponible;
         
-        alias = this.jtxt_alias.getText();
         titulo = this.jtxt_titulo.getText();
-        precio = Integer.parseInt(this.jtxt_precio.getText());
-        entradas = Integer.parseInt(this.jtxt_entrada.getText());
-        disponible = this.jckb_disponible.isSelected();
-        
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        
-        Date fecha = null;
-        
-        try {
-            fecha = formato.parse(this.jtxt_fecha.getText());
-        } 
-        catch (ParseException e) {
-            System.out.println("Error de actualización de fecha" + e.getMessage());
+        if (titulo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese Título", "Valicación", 2);
+            this.jtxt_titulo.requestFocus();
+            return;
         }
         
-        Entrada entrada = new Entrada(titulo, alias, fecha, entradas, precio, disponible);
+        alias = this.jtxt_alias.getText();
+        if (alias.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese Alias", "Valicación", 2);
+            this.jtxt_alias.requestFocus();
+            return;
+        }
         
+        dia = this.jtxt_dia.getText();
+        mes = this.jtxt_mes.getText();
+        anio = this.jtxt_anio.getText();
+        
+        if (dia.isEmpty() || mes.isEmpty() || anio.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese Fecha", "Valicación", 2);
+            this.jtxt_dia.requestFocus();
+            return;
+        }
+        
+        fechaStr = dia + "/" + mes + "/" + anio;
+        SimpleDateFormat formateo = new SimpleDateFormat("dd/MM/yyyy");
+        
+        try {
+            fecha = formateo.parse(fechaStr);
+        } 
+        catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese formato de fecha DD/MM/AAAA", "Validación", 2);
+            this.jtxt_dia.requestFocus();
+            return;
+        }
+        
+        try {
+            precio = Integer.parseInt(this.jtxt_precio.getText());            
+        } 
+        catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un valor numérico", "Validación", 2);
+            this.jtxt_precio.requestFocus();
+            return;
+        }
+        
+        disponible = this.jckb_disponible.isSelected();
+        
+        cantidadEntrada = Integer.parseInt(this.jtxt_entrada.getText());
+        
+        Entrada entrada = new Entrada(titulo, alias, fecha, cantidadEntrada, precio, disponible);
+                
         reg.actualizar(entrada);
-        JOptionPane.showMessageDialog(this, "Datos Actualizados", "Confirmación", 1);    
+        
+        JOptionPane.showMessageDialog(this, "Datos Actualizados", "Confirmación", 1); 
+        
+//        int precio, entradas, dia, mes, anio;
+//        String titulo, alias;
+//        boolean disponible;
+//        Date fecha = null;
+//        
+//        
+//        alias = this.jtxt_alias.getText();
+//        titulo = this.jtxt_titulo.getText();
+//        //DIA
+//        //MES
+//        //AÑO
+//        precio = Integer.parseInt(this.jtxt_precio.getText());
+//        entradas = Integer.parseInt(this.jtxt_entrada.getText());
+//        disponible = this.jckb_disponible.isSelected();
+//        
+//        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+//        
+//        
+//        
+//        try {
+//            fecha = formato.parse(this.jtxt_dia.getText());
+//        } 
+//        catch (ParseException e) {
+//            System.out.println("Error de actualización de fecha" + e.getMessage());
+//        }
+//        
+//        Entrada entrada = new Entrada(titulo, alias, fecha, entradas, precio, disponible);
+//        
+//        reg.actualizar(entrada);
+//        JOptionPane.showMessageDialog(this, "Datos Actualizados", "Confirmación", 1);    
         
     }//GEN-LAST:event_jbtn_actualizarActionPerformed
 
@@ -255,11 +353,15 @@ public class Modificar extends javax.swing.JFrame {
         
         this.jtxt_titulo.setText("");
         this.jtxt_alias.setText("");
-        this.jtxt_fecha.setText("");
+        this.jtxt_dia.setText("");
         this.jtxt_entrada.setText("");
         this.jtxt_precio.setText("");
         this.jckb_disponible.setSelected(false);
     }//GEN-LAST:event_jbtn_limpiarActionPerformed
+
+    private void jtxt_mesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_mesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxt_mesActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -310,8 +412,10 @@ public class Modificar extends javax.swing.JFrame {
     private javax.swing.JButton jbtn_volver;
     private javax.swing.JCheckBox jckb_disponible;
     private javax.swing.JTextField jtxt_alias;
+    private javax.swing.JTextField jtxt_anio;
+    private javax.swing.JTextField jtxt_dia;
     private javax.swing.JTextField jtxt_entrada;
-    private javax.swing.JTextField jtxt_fecha;
+    private javax.swing.JTextField jtxt_mes;
     private javax.swing.JTextField jtxt_precio;
     private javax.swing.JTextField jtxt_titulo;
     // End of variables declaration//GEN-END:variables

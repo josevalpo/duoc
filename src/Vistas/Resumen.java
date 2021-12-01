@@ -132,12 +132,12 @@ public class Resumen extends javax.swing.JFrame {
         try {
             alias = this.jtxt_alias.getText();
         } catch (Exception e) {
-            alias = "";
+            alias = null;
         }
         
         modelo.setRowCount(0);
         
-        if (alias == ""){ //listar a todos
+        if (alias == null || alias.isEmpty()){ //listar a todos
             List<Entrada> lista = reg.buscarTodos();
             
             for (Entrada entrada : lista) {

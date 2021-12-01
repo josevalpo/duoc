@@ -26,10 +26,10 @@ public class Registro {
             
             date = entrada.getFuncion();
             
-            String query = "INSERT INTO entrada(titulo, alias, funcion, cantidadEntrada, precio, disponible) VALUES (?,?,?,?,?,?)";
+            String query = "INSERT INTO entrada(alias, titulo, funcion, cantidadEntrada, precio, disponible) VALUES (?,?,?,?,?,?)";
             PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setString(1, entrada.getTitulo());
-            stmt.setString(2, entrada.getAlias());
+            stmt.setString(1, entrada.getAlias());
+            stmt.setString(2, entrada.getTitulo());
             stmt.setDate(3, new java.sql.Date(date.getTime()));
             stmt.setInt(4, entrada.getCantidadEntrada());
             stmt.setInt(5, entrada.getPrecio());
@@ -112,7 +112,7 @@ public class Registro {
         }
     }    
     
-    public boolean eliminar(String Alias){
+    public boolean eliminar(String alias){
 
         try {
             Conexion con = new Conexion();
@@ -148,9 +148,9 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
                         
-            String query = "SELECT titulo, alias, funcion, cantidadEntrada, precio, disponible FROM entrada WHERE alias = ?";
+            String query = "SELECT alias, titulo, funcion, cantidadEntrada, precio, disponible FROM entrada WHERE alias = ?";
             PreparedStatement stmt = cnx.prepareStatement(query);
-            stmt.setString(2, alias);
+            stmt.setString(1, alias);
             
             ResultSet rs = stmt.executeQuery();
             
@@ -185,7 +185,7 @@ public class Registro {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
                         
-            String query = "SELECT titulo, alias, funcion, cantidadEntrada, precio, disponible FROM entrada";
+            String query = "SELECT alias, titulo, funcion, cantidadEntrada, precio, disponible FROM entrada";
             PreparedStatement stmt = cnx.prepareStatement(query);
             
             ResultSet rs = stmt.executeQuery();
