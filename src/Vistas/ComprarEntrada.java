@@ -271,9 +271,12 @@ public class ComprarEntrada extends javax.swing.JFrame {
         
         Compra compra = new Compra(alias, totalEntradas);
         
-        int opcion = JOptionPane.showConfirmDialog(null, "Total a pagar: $"+total+"\n¿Desea finalizar la compra?", "Aviso", 1);
+        String[] options = {"Crédito", "Débito", "Transferencia", "Cancelar"};
+        int opcion = JOptionPane.showOptionDialog(null, "Seleccione su medio de pago", "Pago", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);    
+        System.out.println(opcion);
+//        int opcion = JOptionPane.showConfirmDialog(null, "Total a pagar: $"+total+"\n¿Desea finalizar la compra?", "Aviso", 1);
         
-        if (opcion == 0) {
+        if (opcion < 3) {
             reg.actualizarCompra(compra);
             JOptionPane.showMessageDialog(this, "Compra realizada", "Aviso", 1);  
         }
