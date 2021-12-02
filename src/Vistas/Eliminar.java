@@ -5,8 +5,11 @@
  */
 package Vistas;
 
+import Modelo.Entrada;
 import controlador.Registro;
+import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,6 +22,24 @@ public class Eliminar extends javax.swing.JFrame {
      */
     public Eliminar() {
         initComponents();
+        
+        String titulo, alias;
+        
+        Registro reg = new Registro();
+        
+        DefaultTableModel modelo = (DefaultTableModel)this.jtbl_listado.getModel();
+        
+        modelo.setRowCount(0);
+        
+
+        List<Entrada> lista = reg.buscarTodos();
+
+        for (Entrada entrada : lista) {
+            titulo = entrada.getTitulo();
+            alias = entrada.getAlias();
+
+            modelo.addRow(new Object[]{titulo, alias});
+        }
     }
 
     /**
@@ -32,8 +53,11 @@ public class Eliminar extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jtxt_alias = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        jbtn_eliminar = new javax.swing.JToggleButton();
         jbtn_volver = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtbl_listado = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Eliminar Película");
@@ -46,10 +70,10 @@ public class Eliminar extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("Eliminar");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtn_eliminar.setText("Eliminar");
+        jbtn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jbtn_eliminarActionPerformed(evt);
             }
         });
 
@@ -60,6 +84,30 @@ public class Eliminar extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Recuerda: El alias corresponde a los primeros 3 caracteres del título");
+
+        jtbl_listado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Título", "Alias"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jtbl_listado);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -68,14 +116,22 @@ public class Eliminar extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
-                .addComponent(jtxt_alias, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                .addComponent(jtxt_alias)
                 .addGap(18, 18, 18)
-                .addComponent(jToggleButton1)
+                .addComponent(jbtn_eliminar)
                 .addGap(37, 37, 37))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel4)
+                .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbtn_volver)
-                .addGap(152, 152, 152))
+                .addGap(158, 158, 158))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,19 +140,23 @@ public class Eliminar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jtxt_alias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton1))
-                .addGap(40, 40, 40)
+                    .addComponent(jbtn_eliminar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jbtn_volver)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void jbtn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_eliminarActionPerformed
         
-        String alias;
+        String alias, titulo;
         alias = this.jtxt_alias.getText();
         
         Registro reg = new Registro();
@@ -109,9 +169,24 @@ public class Eliminar extends javax.swing.JFrame {
         }
         else{
             JOptionPane.showMessageDialog(this, "Película no eliminada", "Aviso", 2);
-        }        
+        }
         
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+        alias = "";
+                
+        DefaultTableModel modelo = (DefaultTableModel)this.jtbl_listado.getModel();
+        
+        modelo.setRowCount(0);
+        
+        List<Entrada> lista = reg.buscarTodos();
+
+        for (Entrada entrada : lista) {
+            titulo = entrada.getTitulo();
+            alias = entrada.getAlias();
+
+            modelo.addRow(new Object[]{titulo, alias});
+        }
+        
+    }//GEN-LAST:event_jbtn_eliminarActionPerformed
 
     private void jtxt_aliasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_aliasActionPerformed
         // TODO add your handling code here:
@@ -160,8 +235,11 @@ public class Eliminar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToggleButton jbtn_eliminar;
     private javax.swing.JButton jbtn_volver;
+    private javax.swing.JTable jtbl_listado;
     private javax.swing.JTextField jtxt_alias;
     // End of variables declaration//GEN-END:variables
 }
